@@ -1,21 +1,17 @@
-import express from 'express'
-import dotenv from 'dotenv'
+import express from "express";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server listening on port ${process.env.PORT}`);
-});
-
-async function startWebServer() {
-    return new Promise((resolve, reject) => {
-        const server: = app.listen(process.env.PORT, () => {
-            console.log(`Server listening on port ${process.env.PORT}`);
-            resolve(server);
-        })
-    })
+export async function startWebServer() {
+  return new Promise((resolve, reject) => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Server listening on port ${process.env.PORT}`);
+      resolve(null);
+    });
+  });
 }
