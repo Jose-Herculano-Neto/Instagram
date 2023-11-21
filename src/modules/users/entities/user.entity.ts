@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Post } from "./posts/entities/post.entity";
 
 @Entity("users")
 export class User {
@@ -31,4 +32,10 @@ export class User {
 
     @CreateDateColumn()
     deleted_at: Date;
+
+
+
+    //Relations
+    @OneToMany(() => Post, (post) => post.user)
+    posts: Post[];
 }
